@@ -1,5 +1,13 @@
-import Image from "next/image";
+"use client";
 import { Poppins } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import Header from "./components/Header";
+import { ModalLogin } from "./components/ModalLogin";
+import { ModalRegister } from "./components/ModalRegister";
+import { useUserContext } from "./contexts/UserContext";
+import Cart from "./components/Cart";
+import { useCartContext } from "./contexts/CartContext";
+import ProductList from "./components/ProductList";
 
 const poppins = Poppins({
 	weight: ["400", "600", "700"],
@@ -8,11 +16,21 @@ const poppins = Poppins({
 });
 
 export default function Home() {
+	const { actualModalForm } = useUserContext();
+	const { isOpenCart } = useCartContext();
+
 	return (
-		<main
-			className={`flex min-h-screen flex-col items-center justify-between p-24 ${poppins.variable}`}
-		>
-			<h1 className="mt-4 p-4 ">teste</h1>
-		</main>
+		<>
+			<div
+				className={`min-h-screen flex-col justify-center ${poppins.variable}`}
+			>
+				<Header />
+				<ProductList />
+				{actualModalForm === "login" && <ModalLogin />}
+				{actualModalForm === "register" && <ModalRegister />}
+				{isOpenCart && <Cart />}
+			</div>
+			<Toaster />
+		</>
 	);
 }
