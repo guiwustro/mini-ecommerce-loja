@@ -16,10 +16,9 @@ const Header = () => {
 	} = useUserContext();
 	const { toogleModalCart, cart } = useCartContext();
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
-
 	useEffect(() => {
 		getUserOrder();
-	}, [getUserOrder]);
+	}, []);
 
 	return (
 		<div className="w-screen h-20  flex justify-center items-center border-b-gray-100 border-b-2">
@@ -36,7 +35,7 @@ const Header = () => {
 					</button>
 					<div
 						className={`${`${
-							isOpenMenu ? "hidden" : "flex"
+							isOpenMenu ? "flex" : "hidden"
 						}`} absolute top-9 -right-2 bg-gray-50 rounded-lg w-44 flex-col items-center md:flex-row md:static md:flex md:w-full md:bg-transparent`}
 					>
 						{isAuthenticated ? (

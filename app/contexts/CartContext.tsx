@@ -164,9 +164,15 @@ const CartProvider = ({ children }: ICartProps) => {
 			.then(() => {
 				setCart(undefined);
 				toast.dismiss();
+				toast.success(
+					'Pedido efetuado com sucesso! Você pode conferir o status do pedido em "Meus pedidos"'
+				);
 			})
 			.catch((err) => {
 				toast.dismiss();
+				toast.error(
+					"Ocorreu um erro ao tentar realizar o pedido. Tente novamente mais tarde."
+				);
 			});
 	};
 

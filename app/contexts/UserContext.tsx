@@ -76,8 +76,10 @@ export const UserProvider = ({ children }: IUserProvider) => {
 			api.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
 			closeModal();
 			setIsAuthenticated(true);
-
 			toast.dismiss();
+			toast.success("Login realizado com sucesso!", {
+				duration: 3000,
+			});
 		} catch (error) {
 			console.log(error);
 			toast.dismiss();
@@ -117,8 +119,8 @@ export const UserProvider = ({ children }: IUserProvider) => {
 	};
 
 	const logout = () => {
-		setIsAuthenticated(false);
 		localStorage.removeItem("@mini-ecommerce:token");
+		setIsAuthenticated(false);
 	};
 
 	return (

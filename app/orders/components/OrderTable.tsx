@@ -6,7 +6,7 @@ import { convertNumberToBRL } from "@/app/utils/convertNumberToBRL";
 const OrderTable = () => {
 	const { userOrder: orders } = useUserContext();
 	return (
-		<div className="w-full rounded-lg  flex md:justify-center items-center mt-4 overflow-x-auto">
+		<div className="w-full rounded-lg  flex lg:justify-center items-center mt-4 overflow-x-auto">
 			<table className="w-full table-auto overflow-x-auto  max-w-screen-xl border-2 border-collapse">
 				<thead className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
 					<tr>

@@ -48,7 +48,7 @@ export const ModalLogin = () => {
 		loginUser(data);
 	};
 	return (
-		<Modal className="items-center justify-center">
+		<Modal className="items-center justify-center z-10">
 			<div
 				className="relative flex flex-col items-center max-w-530 p-8 rounded-md bg-white"
 				ref={ref}

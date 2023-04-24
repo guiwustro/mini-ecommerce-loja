@@ -7,17 +7,21 @@ import { useCartContext } from "../contexts/CartContext";
 import CartProductCard from "./CartProductCard";
 import Modal from "./Modal";
 import { convertNumberToBRL } from "../utils/convertNumberToBRL";
+import { useUserContext } from "../contexts/UserContext";
 
 const Cart = () => {
 	const { freightCart, totalCart, toogleModalCart, sendAOrder, cart } =
 		useCartContext();
 	const modalRef = useRef<HTMLHeadingElement>(null);
-
+	const { actualModalForm } = useUserContext();
 	useEffect(() => {
 		function handleOutClick(event: any) {
 			const value = modalRef?.current;
-
-			if (value && !value.contains(event.target)) {
+			if (
+				value &&
+				!value.contains(event.target) &&
+				actualModalForm === "closed"
+			) {
 				toogleModalCart();
 			}
 		}
@@ -26,11 +30,7 @@ const Cart = () => {
 		return () => {
 			document.removeEventListener("mousedown", handleOutClick);
 		};
-	}, []);
-
-	const handleClick = () => {
-		toogleModalCart();
-	};
+	}, [actualModalForm]);
 
 	return (
 		<Modal className="items-start justify-end">
