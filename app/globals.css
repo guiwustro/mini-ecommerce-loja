@@ -21,4 +21,5 @@ body {
 }
 * {
 	font-family: var(--font-poppins);
+	color: black;
 }
